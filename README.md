@@ -3,7 +3,7 @@
 
 ![cie-pic](cie.png)
 
-<br><br>
+<br>
 
 ### Notes:
 * [Open SSH](https://github.com/eltownes/Cardano-Configs/tree/master/Open%20SSH)
