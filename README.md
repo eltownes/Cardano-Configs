@@ -3,8 +3,6 @@
 
 ![cie-pic](cie.png)
 
-<br>
-
 ### Notes:
 * [Open SSH](https://github.com/eltownes/Cardano-Configs/tree/master/Open%20SSH)
 
@@ -19,8 +17,6 @@
 * [Cardano Documentation](https://docs.cardano.org/en/latest/)
 
 * [Input Output](https://github.com/input-output-hk)
-
-<br>
 
 #### Other Stuff:
 * [IOHK | Cardano](https://iohk.io/en/projects/cardano/)
