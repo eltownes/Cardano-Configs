@@ -2,11 +2,24 @@
 # PostgreSQL Quick Ref
 <br>
 
-### Sources
 
-* [PSQL](https://www.postgresql.org/)  
-* [DBeaver](https://dbeaver.io/)  
-* [pgAdmin](https://www.pgadmin.org/)  
+### Resources
+
+o [PostgreSQL](https://www.postgresql.org/)  
+  \  \  \ o [Apt Repo](https://www.postgresql.org/download/linux/ubuntu/)  
+  \  \  \ o [Current docs](https://www.postgresql.org/docs/current/)  
+o [DBeaver](https://dbeaver.io/)  
+o [pgAdmin](https://www.pgadmin.org/)  
+<br>
+
+### TOC
+o [Admin](#admin)  
+o [Backup & Restore](#backup-and-restore)  
+o [R and psql](#postgresql-with-r-from-windows)  
+<br>
+
+### Install
+Get it from the Apt Repo  
 <br>
 
 ### Magic
@@ -16,46 +29,49 @@ psql -i -u postgres
 <br>
 
 ### Service  
-* System & database (psql) & db admin (?) may have tricky uid & pwd setup `  
-* Default folder: /etc/postgresql
-  * postgresql.conf - for network settings  
-  * pg_hba.conf - for authentication settings  
-  * pg_ident.conf - for identity mapping  
-* Default logging folder: /var/log/postgresql  
-* Default socket & host: /var/run/postgresql & 5432  
-* ` psql -V ` : version -V not -v  
-* ` netstat -nlt ` : display listening tcpip connections  
-* ` service postgresql < status | start | stop | restart > ` : !
-<br><br>
+o System & database (psql) & db admin tool may have tricky uid & pwd setup  
+o Default folder: /etc/postgresql  
+  \ \ \ \ o postgresql.conf - for network settings  
+  \ \ \ \ o opg_hba.conf - for authentication settings  
+  \ \ \ \ o pg_ident.conf - for identity mapping  
+o Default logging folder: /var/log/postgresql  
+o Default socket & host: /var/run/postgresql & 5432  
+o ` psql -V ` : version -V not -v  
+o ` netstat -nlt ` : display listening tcpip connections  
+o ` service postgresql < status | start | stop | restart > `  
+<br>
 
 ### Admin
 #### Before login  
-* ` psql -l ` : list databases  
-* ` psql -d < database > ` : connect to database  
+o ` psql -l ` : list databases  
+o ` psql -d < database > ` : connect to database  
 <br>
 
 #### After login  
-* ` \l ` : list databases  
-* ` \dn ` : list schemas  
-* ` \du ` : list users  
-* ` \dv ` : list views  
-* ` \conninfo ` : display connection info  
-* ` \q ` : quit  
-* ` ALTER USER jim WITH PASSWORD 'jimmy'; `  
+o ` \? ` : for psql help  
+o ` \h ` : for SQL help  
+o ` \l ` : list databases  
+o ` \dn ` : list schemas  
+o ` \du ` : list users  
+o ` \dv ` : list views  
+o ` \conninfo ` : display connection info  
+  \ \ \ \ e.g. `You are connected to database "postgres" as user "postgres" via socket in "/var/run/postgresql" at port "5432".`  
+o ` ALTER USER jim WITH PASSWORD 'jimmy'; `  
+o ` \q ` : quit  
 <br>
 
 #### Views
-* Create View from table1
+o Create View from table1
 ```
 CREATE VIEW public."viewTest" AS
  SELECT *
  FROM public.table1;
 ```
-* Drop View
+o Drop View
 ```
 DROP VIEW "viewTest";
 ```
-* Scripting
+o Scripting
 ```
 # First drop
 psql --dbname=dbTest --command="DROP VIEW IF EXISTS public.\""C_Test\"";"
@@ -69,11 +85,25 @@ psql --dbname=dbTest --command="
 ```
 <br>
 
-### Set up environment to Postgresql with R from Windows
+### Backup and restore
+Multiple databases on same server
+
+o Backup
+```
+pg_dumpall -F t > /tmp/backups/postgres/all_dbs.tar  
+```
+o Restore
+```
+pg_restore -d new_db /tmp/backups/postgres/all_dbs.tar -c -U postgres
+```
+
+<br>
+
+### PostgreSQL with R from Windows
 ```
 # PostgreSQL OR ODBC
 
-# ODBC can (not always) browse the database through the connections window
+# ODBC can (not always?) browse the database tables through the connections window
 
 #
 library(dplyr)
