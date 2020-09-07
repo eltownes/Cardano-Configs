@@ -1,6 +1,6 @@
 # Cardano Configurations
 <br>
-![test](https://github.com/eltownes/Cardano-Configs/blob/master/images/CIE.PNG)
+![test](CIE.PNG)
 <br><br>
 
 ### Notes:
