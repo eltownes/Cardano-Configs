@@ -1,7 +1,5 @@
 
 # PostgreSQL Quick Ref
-<br>
-
 
 ### Resources
 
@@ -10,23 +8,19 @@ o [PostgreSQL](https://www.postgresql.org/)
   \  \  \ o [Current docs](https://www.postgresql.org/docs/current/)  
 o [DBeaver](https://dbeaver.io/)  
 o [pgAdmin](https://www.pgadmin.org/)  
-<br>
 
 ### TOC
 o [Admin](#admin)  
 o [Backup & Restore](#backup-and-restore)  
 o [R and psql](#postgresql-with-r-from-windows)  
-<br>
 
 ### Install
 Get it from the Apt Repo  
-<br>
 
 ### Magic
 ```
 psql -i -u postgres
 ````
-<br>
 
 ### Service  
 o System & database (psql) & db admin tool may have tricky uid & pwd setup  
@@ -39,13 +33,11 @@ o Default socket & host: /var/run/postgresql & 5432
 o ` psql -V ` : version -V not -v  
 o ` netstat -nlt ` : display listening tcpip connections  
 o ` service postgresql < status | start | stop | restart > `  
-<br>
 
 ### Admin
 #### Before login  
 o ` psql -l ` : list databases  
 o ` psql -d < database > ` : connect to database  
-<br>
 
 #### After login  
 o ` \? ` : for psql help  
@@ -58,32 +50,9 @@ o ` \conninfo ` : display connection info
   \ \ \ \ e.g. `You are connected to database "postgres" as user "postgres" via socket in "/var/run/postgresql" at port "5432".`  
 o ` ALTER USER jim WITH PASSWORD 'jimmy'; `  
 o ` \q ` : quit  
-<br>
 
 #### Views
-o Create View from table1
-```
-CREATE VIEW public."viewTest" AS
- SELECT *
- FROM public.table1;
-```
-o Drop View
-```
-DROP VIEW "viewTest";
-```
-o Scripting
-```
-# First drop
-psql --dbname=dbTest --command="DROP VIEW IF EXISTS public.\""C_Test\"";"
-
-# Then create
-psql --dbname=dbTest --command="
- CREATE VIEW public.\""C_Test\"" AS 
- SELECT * 
- FROM public.industry;
-"
-```
-<br>
+Best implemented through scripting - see [matViews.sh](matViews.sh)  
 
 ### Backup and restore
 Multiple databases on same server
@@ -96,8 +65,6 @@ o Restore
 ```
 pg_restore -d new_db /tmp/backups/postgres/all_dbs.tar -c -U postgres
 ```
-
-<br>
 
 ### PostgreSQL with R from Windows
 ```
