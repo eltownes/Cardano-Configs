@@ -1,6 +1,6 @@
 # Cardano Configurations
 <br>
-![cie-pic](cie.png)
+![cie-pic] (cie.png)
 <br><br>
 
 ### Notes:
