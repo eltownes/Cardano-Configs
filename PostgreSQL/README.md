@@ -4,8 +4,8 @@
 ## Resources
 
 o [PostgreSQL](https://www.postgresql.org/)  
-  \ o [Apt Repo](https://www.postgresql.org/download/linux/ubuntu/)  
-  \  \  \ o [Current docs](https://www.postgresql.org/docs/current/)  
+\ \ \ \ o [Apt Repo](https://www.postgresql.org/download/linux/ubuntu/)  
+\ \ \ \ o [Current docs](https://www.postgresql.org/docs/current/)  
 o [DBeaver](https://dbeaver.io/)  
 o [pgAdmin](https://www.pgadmin.org/)  
 
