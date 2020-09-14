@@ -14,13 +14,11 @@ done
 
 #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 # m_Epoch
-if [ $m_Epoch == 1 ] | [ $m_Epoch == 2 ] ;
-then
+if [ $m_Epoch == 1 ] | [ $m_Epoch == 2 ] ; then
   psql --dbname=cexplorer --command="DROP MATERIALIZED VIEW IF EXISTS public.\""m_Epoch\"";"
 fi
 # create
-if [ $m_Epoch == 1 ];
-then
+if [ $m_Epoch == 1 ] ; then
   psql --dbname=cexplorer --command="
   CREATE MATERIALIZED VIEW public.\""m_Epoch\""
   AS
@@ -38,8 +36,7 @@ ALTER TABLE public.\""m_Epoch\""
   OWNER TO $usr;
 "
 fi
-if [ $m_Epoch == 3 ];
-then
+if [ $m_Epoch == 3 ] ; then
   psql --dbname=cexplorer --command="REFRESH MATERIALIZED VIEW public.\""m_Epoch\"";"
 fi
 echo "m_Epoch done"
