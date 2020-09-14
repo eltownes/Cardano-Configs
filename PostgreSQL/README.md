@@ -56,15 +56,14 @@ psql -i -u postgres
 Best implemented through scripting - see [matViews.sh](matViews.sh)  
 
 ## Backup and restore
-Multiple databases on same server
 
 * Backup
 ```
-pg_dumpall -F t > /tmp/backups/postgres/all_dbs.tar  
+pg_dump postgres -f $HOME/backup/postgres_backup.tar -F t -v
 ```
-* Restore
+* Restore - first create db
 ```
-pg_restore -d new_db /tmp/backups/postgres/all_dbs.tar -c -U postgres
+pg_restore -d postgres $HOME/backup/postgres_backup.tar -F t -v -U postgres
 ```
 
 ## PostgreSQL with R from Windows
