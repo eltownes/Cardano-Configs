@@ -18,16 +18,14 @@
 ## Install
 Get it from the Apt Repo  
 
-## Magic
-```
-psql -i -u postgres
-````
-
 ## Service  
 * System & database (psql) & db admin tool may have tricky uid & pwd setup  
+  * e.g. ` ALTER USER [user] WITH PASSWORD '[password]'; `  
 * Default folder: /etc/postgresql  
   * postgresql.conf - for network settings  
-  * opg_hba.conf - for authentication settings  
+    * init: ` host all all 0.0.0.0/0 {::/0} md5 `
+  * pg_hba.conf - for authentication settings  
+    * init: ` listen_address = '*' `
   * pg_ident.conf - for identity mapping  
 * Default logging folder: /var/log/postgresql  
 * Default socket & host: /var/run/postgresql & 5432  
@@ -49,7 +47,6 @@ psql -i -u postgres
 * ` \dv ` : list views  
 * ` \conninfo ` : display connection info  
   * e.g. `You are connected to database "postgres" as user "postgres" via socket in "/var/run/postgresql" at port "5432".`  
-* ` ALTER USER jim WITH PASSWORD 'jimmy'; `  
 * ` \q ` : quit  
 
 #### Views
