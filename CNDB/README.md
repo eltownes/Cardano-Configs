@@ -4,7 +4,9 @@
 
 ### Prereqs
 ```
-sudo apt update  
+sudo apt-get update  
+
+sudo apt-get upgrade  
 
 sudo apt install git  
 
@@ -22,7 +24,7 @@ chmod +x install-nix.sh
 
 ./install-nix.sh  
 
-./home/mike/.nix-profile/etc/profile.d/nix.sh
+. /home/mike/.nix-profile/etc/profile.d/nix.sh
 ```
 <br>
 
@@ -64,11 +66,11 @@ Also check [postgreSQL notes](https://github.com/eltownes/Cardano-Configs/tree/m
 ```
 # from the db directory
 
-scripts/postgresql-setup.sh --createdb
-
 export PGPASSFILE=/home/mike/cardano-db-sync/config/pgpass
 
-sudo -u postgres createuser --createdb --superuser jim
+sudo -u postgres createuser --createdb --superuser [user]
+
+scripts/postgresql-setup.sh --createdb
 ```
 <br>
 
