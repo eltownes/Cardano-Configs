@@ -24,7 +24,7 @@ chmod +x install-nix.sh
 
 ./install-nix.sh  
 
-. /home/mike/.nix-profile/etc/profile.d/nix.sh
+. /home/[user]/.nix-profile/etc/profile.d/nix.sh # env vars
 ```
 <br>
 
@@ -66,7 +66,7 @@ Also check [postgreSQL notes](https://github.com/eltownes/Cardano-Configs/tree/m
 ```
 # from the db directory
 
-export PGPASSFILE=/home/mike/cardano-db-sync/config/pgpass
+export PGPASSFILE=/home/[user]/cardano-db-sync/config/pgpass
 
 sudo -u postgres createuser --createdb --superuser [user]
 
