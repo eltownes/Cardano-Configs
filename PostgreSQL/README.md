@@ -59,11 +59,11 @@ Best implemented through scripting - see [matViews.sh](matViews.sh)
 
 * Backup
 ```
-pg_dump postgres -f $HOME/backup/postgres_backup.tar -F t -v
+pg_dump [db] -f $HOME/backup/[db]_backup.tar -F t -v
 ```
 * Restore - first create db
 ```
-pg_restore -d postgres $HOME/backup/postgres_backup.tar -F t -v -U postgres
+pg_restore -d [db] $HOME/backup/[db]_backup.tar -F t -v -U [user]
 ```
 
 ## PostgreSQL with R from Windows
