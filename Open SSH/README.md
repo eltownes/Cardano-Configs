@@ -8,30 +8,32 @@
 * [OpenSSH on Ubuntu](https://help.ubuntu.com/community/SSH)  
 
 ### Ubuntu - install & config
-* ` sudo apt-get install openssh-server `  
+* install
+```
+sudo apt-get install openssh-server
+```   
 * backup file before making changes:
 ``` 
 sudo cp /etc/ssh/sshd_config $HOME/backup/ssh
 ```  
-* ` ssh -v localhost ` : test for a local connection  
+* test for a local connection : ` ssh -v localhost `  
 * tighten security a bit:  
-    * sshd_config: ` AllowUsers bob `, no empty passwords  
-* consider a non-standard port (default is 22 / user ports: 1024-49151)  
-* restart service
-```
-service ssh restart
-```
+   * sshd_config:  
+      * ` AllowUsers [id] `  
+      * ` PermitEmptyPasswords no`  
+      * ` Port [#] ` user ports: 1024-49151  
+* restart service : ` service ssh restart `
 
 ### Windows - PowerShell password login
 * login
 ```
-ssh bob@1.1.1.2 [-p 1025]
+ssh [user]@1.1.1.1 -p [port #]
 ```  
 <br>
 
 ## Transition to SSH key only access
 
-### Windows - generate keys
+### Windows
 * run PowerShell as Administrator  
 * choose file location and passphrase (ssh login password)
 ```
@@ -41,15 +43,27 @@ ssh-keygen -b 4096
     * id_rsa  
     * id_rsa.pub  
 * copy public key to Ubuntu via scp  
-  if adding more keys, modify below command  
+  if adding more keys, modify below command:  
     * first backup 'authorized_keys' and then just send the key  
     * then concatenate new key: ` cat id_rsa.pub >> authorized_keys `  
     
 ```
-scp [-P 1025] id_rsa.pub jim@1.1.1.1:~/.ssh/authorized_keys
+scp -P [port #] id_rsa.pub [user]@1.1.1.1:~/.ssh/authorized_keys
 ```
 * modify settings in 'sshd_config' to disallow password and enable pubkey
 authentication
+  * ` PubkeyAuthentication yes `  
+  * ` PasswordAuthentication no `  
+
+### Windows <---> Ubuntu
+* Copy file to local pc  
+```
+scp -P [port #] [user]@1.1.1.1:~/backup/[file] C:\dlt 
+```
+* Copy directory to local pc  
+```
+scp -r -P [port #] [user]e@1.1.1.1:~/backup/[folder] C:\dlt
+```
 
 
 <br><br>
